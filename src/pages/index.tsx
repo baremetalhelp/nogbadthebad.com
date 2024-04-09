@@ -1,88 +1,50 @@
-import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
 import {
   Box,
-  Center,
-  Heading,
-  Highlight,
-  List,
-  ListItem,
+  Container,
+  Grid,
+  GridItem,
+  HStack,
+  Image,
+  SimpleGrid,
   Text,
   useColorMode,
-  Code,
-  Button,
-  calc,
-  CodeProps,
-  Link as ChakraLink,
-  Divider,
-  Flex,
 } from "@chakra-ui/react";
+import { StaticImage } from "gatsby-plugin-image";
 
-const $lineHeight = "1.4375rem";
-
-const PurpleCode = (props: CodeProps) => (
-  <Code colorScheme="purple" {...props} />
-);
+import type { HeadFC, PageProps } from "gatsby";
+import * as React from "react";
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 
 const IndexPage: React.FC<PageProps> = () => {
   const { toggleColorMode } = useColorMode();
   return (
-    <Box as="main">
-      <Center height="100vh" textAlign="center">
-        <Flex gap={$lineHeight} flexDir="column">
-          <Heading
-            as="h1"
-            size="4xl"
-            maxW="16ch"
-            lineHeight={calc($lineHeight).multiply(4).toString()}
-          >
-            <Highlight
-              query="With Speed"
-              styles={{ color: "purple.600", _dark: { color: "purple.400" } }}
-            >
-              Get Started Using Gatsby With Speed
-            </Highlight>
-          </Heading>
-          <Text fontSize="2xl" mb={$lineHeight}>
-            Thank you for using the Gatsby Starter for{" "}
-            <PurpleCode fontSize="initial">Chakra UI</PurpleCode>!
+    <>
+      <Nav />
+      <Container maxW={"6xl"} as="main" py={20}>
+        <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} alignItems="center">
+          <Text fontSize={"4xl"}>
+            Nogbad the bad is the archetypal wicked uncle.
           </Text>
-          <List textAlign="start" spacing={4}>
-            <ListItem>
-              ⚡Create accessible Gatsby apps with speed using Chakra UI
-            </ListItem>
-            <ListItem>
-              ⚡Generate types from your custom component with the Chakra CLI
-              for IDE autocompletion
-            </ListItem>
-          </List>
-          <Text>
-            To generate the theming token types, run{" "}
-            <PurpleCode>npm run theme</PurpleCode> or{" "}
-            <PurpleCode>npm run theme:watch</PurpleCode>
+          <StaticImage src="../images/nogbad.jpg" layout={"fixed"} height={200} alt="Nogbad" />
+          <StaticImage src="../images/northlands.jpg" alt="Northlands" />
+          <Text fontSize={"4xl"}>
+            He is obsessed with an ambition to regain the crown of the
+            Northlands.
           </Text>
-          <Text>
-            Head over to{" "}
-            <ChakraLink
-              href="https://chakra-ui.com"
-              color="blue.500"
-              fontWeight="bold"
-            >
-              ChakraUI.com
-            </ChakraLink>{" "}
-            to get started using the components and creating your theme!
+          <Text fontSize={"4xl"}>
+            In his view it was wrongly given to his worthless nephew, Noggin.
           </Text>
-          <Divider />
-          <Button
-            onClick={toggleColorMode}
-            colorScheme="blue"
-            alignSelf="center"
-          >
-            Toggle Color Mode
-          </Button>
-        </Flex>
-      </Center>
-    </Box>
+          <StaticImage src="../images/noggin.jpg" layout={"fixed"}  alt="Noggin" />
+          <StaticImage src="../images/badcast.jpg" layout={"fixed"} alt="Nogbad's castle" />
+          <Text fontSize={"4xl"}>
+            His life is spent in his castle devising ingeniously evil schemes to
+            steal the crown, or force Noggin to give it up.
+          </Text>
+        </SimpleGrid>
+      </Container>
+      <Footer />
+    </>
   );
 };
 
