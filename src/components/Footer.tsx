@@ -82,6 +82,14 @@ export default function Footer() {
               <FaLinkedin />
             </Link>
           </SocialButton>
+          <SocialButton label={"Github"} href={"#"}>
+            <Link
+              href="https://github.com/baremetalhelp/nogbadthebad.com"
+              target="_blank"
+            >
+              <FaGithub />
+            </Link>
+          </SocialButton>
         </HStack>
       </Container>
     </Box>

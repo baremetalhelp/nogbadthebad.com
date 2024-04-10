@@ -6,17 +6,17 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
+  Link as ChakraLink,
   Container,
   Flex,
   HStack,
   Stack,
-  Text,
   useColorMode,
+  LinkOverlay,
   useColorModeValue,
-  useDisclosure,
-  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 interface Props {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ interface Props {
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Box
@@ -33,13 +33,15 @@ export default function Nav() {
       >
         <Container as={Stack} maxW={"6xl"} px={4}>
           <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-            <Box>
-              <ChakraLink as={Link} to="/">
-                <Text as={"b"} fontSize={"2xl"}>
-                  Nogbad The Bad
-                </Text>
-              </ChakraLink>
-            </Box>
+              <Box
+                width="50px"
+                height="50px"
+                borderRadius="full"
+                overflow="hidden"
+                boxShadow="md"
+              >
+                <StaticImage src="../images/nogbad.jpg" alt="Nogbad" />
+              </Box>
             <Flex
               as={HStack}
               spacing={10}
@@ -47,15 +49,15 @@ export default function Nav() {
               justifyContent={"center"}
             >
               <ChakraLink as={Link} to={"/"}>
-                <Text as={"b"}>Home</Text>
+                <Button variant={"ghost"}>Home</Button>
               </ChakraLink>
               <ChakraLink as={Link} to={"/about"}>
-                <Text as={"b"}>About</Text>
+                <Button variant={"ghost"}>About</Button>
               </ChakraLink>
-              <ChakraLink as={Link} to={"/credits"}>
-                <Text as={"b"}>Credits</Text>
-              </ChakraLink>
-              <Button onClick={toggleColorMode}>
+              {/* <ChakraLink as={Link} to={"/credits"}>
+                <Button variant={"ghost"}>Credits</Button>
+              </ChakraLink> */}
+              <Button onClick={toggleColorMode} variant={"ghost"}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
             </Flex>

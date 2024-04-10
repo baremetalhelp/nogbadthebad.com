@@ -1,13 +1,13 @@
-import * as React from "react";
-import { Link, HeadFC, PageProps } from "gatsby";
 import {
   Box,
+  Button,
+  Link as ChakraLink,
   Code,
   Heading,
-  Link as ChakraLink,
   Text,
-  Button,
 } from "@chakra-ui/react";
+import { HeadFC, Link, PageProps } from "gatsby";
+import * as React from "react";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
